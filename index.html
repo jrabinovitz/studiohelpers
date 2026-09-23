@@ -644,6 +644,7 @@
             padding: 0.2rem 0.65rem;
             border-radius: 100px;
         }
+        .pricing-cards-mobile { display: none; }
         .pricing-note {
             text-align: center;
             margin-top: 1.5rem;
@@ -1088,9 +1089,36 @@
             .about-grid { grid-template-columns: 1fr; gap: 2rem; }
             .contact-grid { grid-template-columns: 1fr; }
             .form-row { grid-template-columns: 1fr; }
-            .pricing-table { font-size: 0.8rem; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-            .pricing-table thead th,
-            .pricing-table tbody td { padding: 0.75rem 0.65rem; }
+            .pricing-table { display: none; }
+            .pricing-cards-mobile { display: flex; flex-direction: column; gap: 1rem; margin-top: 1.5rem; }
+            .pricing-card-m {
+                background: #fff;
+                border: 1px solid #e2e8f0;
+                border-radius: 14px;
+                padding: 1.25rem;
+                box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            }
+            .pricing-card-m .pcm-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 0.5rem;
+            }
+            .pricing-card-m .pcm-role { font-weight: 700; color: #1e293b; font-size: 1rem; }
+            .pricing-card-m .pcm-skills { color: #64748b; font-size: 0.85rem; margin-bottom: 0.85rem; }
+            .pricing-card-m .pcm-rates {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 0.75rem;
+            }
+            .pricing-card-m .pcm-rate-box {
+                background: #f0f7ff;
+                border-radius: 10px;
+                padding: 0.75rem;
+                text-align: center;
+            }
+            .pricing-card-m .pcm-rate-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; font-weight: 600; margin-bottom: 0.25rem; }
+            .pricing-card-m .pcm-rate-value { font-size: 1.1rem; font-weight: 700; color: #2563eb; }
             .footer-grid { grid-template-columns: 1fr; gap: 1.5rem; }
             .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
             .section-title { font-size: 1.65rem; }
@@ -1115,9 +1143,8 @@
             .metric-number { font-size: 1.5rem; }
             .metric-label { font-size: 0.7rem; }
             .section-title { font-size: 1.45rem; }
-            .pricing-table thead th,
-            .pricing-table tbody td { padding: 0.6rem 0.5rem; font-size: 0.75rem; }
-            .savings-badge { font-size: 0.7rem; padding: 0.15rem 0.5rem; }
+            .pricing-card-m .pcm-rate-value { font-size: 1rem; }
+            .pricing-card-m { padding: 1rem; }
         }
     </style>
 </head>
@@ -1590,6 +1617,72 @@
                 </tr>
             </tbody>
         </table>
+        <div class="pricing-cards-mobile">
+            <div class="pricing-card-m">
+                <div class="pcm-header"><span class="pcm-role">CAD Drafter</span><span class="savings-badge">Save 65%</span></div>
+                <div class="pcm-skills">AutoCAD, Revit, Construction Docs</div>
+                <div class="pcm-rates">
+                    <div class="pcm-rate-box"><div class="pcm-rate-label">Part-Time</div><div class="pcm-rate-value">$1,500/mo</div></div>
+                    <div class="pcm-rate-box"><div class="pcm-rate-label">Full-Time</div><div class="pcm-rate-value">$2,450/mo</div></div>
+                </div>
+            </div>
+            <div class="pricing-card-m">
+                <div class="pcm-header"><span class="pcm-role">BIM Modeler</span><span class="savings-badge">Save 70%</span></div>
+                <div class="pcm-skills">Revit, ArchiCAD, 3D Coordination</div>
+                <div class="pcm-rates">
+                    <div class="pcm-rate-box"><div class="pcm-rate-label">Part-Time</div><div class="pcm-rate-value">$1,500/mo</div></div>
+                    <div class="pcm-rate-box"><div class="pcm-rate-label">Full-Time</div><div class="pcm-rate-value">$2,450/mo</div></div>
+                </div>
+            </div>
+            <div class="pricing-card-m">
+                <div class="pcm-header"><span class="pcm-role">3D Visualization Artist</span><span class="savings-badge">Save 70%</span></div>
+                <div class="pcm-skills">Lumion, V-Ray, Enscape, SketchUp</div>
+                <div class="pcm-rates">
+                    <div class="pcm-rate-box"><div class="pcm-rate-label">Part-Time</div><div class="pcm-rate-value">$1,500/mo</div></div>
+                    <div class="pcm-rate-box"><div class="pcm-rate-label">Full-Time</div><div class="pcm-rate-value">$2,450/mo</div></div>
+                </div>
+            </div>
+            <div class="pricing-card-m">
+                <div class="pcm-header"><span class="pcm-role">Architectural Designer</span><span class="savings-badge">Save 65%</span></div>
+                <div class="pcm-skills">Schematic Design, Design Development</div>
+                <div class="pcm-rates">
+                    <div class="pcm-rate-box"><div class="pcm-rate-label">Part-Time</div><div class="pcm-rate-value">$1,500/mo</div></div>
+                    <div class="pcm-rate-box"><div class="pcm-rate-label">Full-Time</div><div class="pcm-rate-value">$2,450/mo</div></div>
+                </div>
+            </div>
+            <div class="pricing-card-m">
+                <div class="pcm-header"><span class="pcm-role">Permit Coordinator</span><span class="savings-badge">Save 60%</span></div>
+                <div class="pcm-skills">Permit Apps, Code Research, Zoning</div>
+                <div class="pcm-rates">
+                    <div class="pcm-rate-box"><div class="pcm-rate-label">Part-Time</div><div class="pcm-rate-value">$1,500/mo</div></div>
+                    <div class="pcm-rate-box"><div class="pcm-rate-label">Full-Time</div><div class="pcm-rate-value">$2,450/mo</div></div>
+                </div>
+            </div>
+            <div class="pricing-card-m">
+                <div class="pcm-header"><span class="pcm-role">Construction Admin Support</span><span class="savings-badge">Save 65%</span></div>
+                <div class="pcm-skills">RFIs, Submittals, Change Orders</div>
+                <div class="pcm-rates">
+                    <div class="pcm-rate-box"><div class="pcm-rate-label">Part-Time</div><div class="pcm-rate-value">$1,300/mo</div></div>
+                    <div class="pcm-rate-box"><div class="pcm-rate-label">Full-Time</div><div class="pcm-rate-value">$2,100/mo</div></div>
+                </div>
+            </div>
+            <div class="pricing-card-m">
+                <div class="pcm-header"><span class="pcm-role">Marketing Coordinator</span><span class="savings-badge">Save 60%</span></div>
+                <div class="pcm-skills">Proposals, SF330s, Social Media</div>
+                <div class="pcm-rates">
+                    <div class="pcm-rate-box"><div class="pcm-rate-label">Part-Time</div><div class="pcm-rate-value">$1,300/mo</div></div>
+                    <div class="pcm-rate-box"><div class="pcm-rate-label">Full-Time</div><div class="pcm-rate-value">$2,100/mo</div></div>
+                </div>
+            </div>
+            <div class="pricing-card-m">
+                <div class="pcm-header"><span class="pcm-role">Administrative Assistant</span><span class="savings-badge">Save 65%</span></div>
+                <div class="pcm-skills">Scheduling, Filing, Project Tracking</div>
+                <div class="pcm-rates">
+                    <div class="pcm-rate-box"><div class="pcm-rate-label">Part-Time</div><div class="pcm-rate-value">$1,300/mo</div></div>
+                    <div class="pcm-rate-box"><div class="pcm-rate-label">Full-Time</div><div class="pcm-rate-value">$2,100/mo</div></div>
+                </div>
+            </div>
+        </div>
         <p class="pricing-note"><strong>Full-time and part-time options available.</strong> No contracts, no minimums. Scale up or down anytime. All rates include management, payroll, benefits, and monitoring.</p>
         <div class="pricing-cta">
             <a href="#contact" class="btn btn-primary">Get a Custom Quote</a>
