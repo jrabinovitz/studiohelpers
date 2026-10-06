@@ -1181,3 +1181,14 @@ button, input, textarea, select { font: inherit; }
     .role-section { padding: 3.5rem 0; }
     .role-hero { padding: 2.5rem 0 3rem; }
 }
+
+/* ===== POLISH 2026-10-06 ===== */
+.float-tag:nth-child(1) { left: 4%; }
+.float-tag:nth-child(2) { right: 4%; }
+.float-tag:nth-child(3) { left: 4%; }
+.float-tag:nth-child(4) { right: 4%; }
+.role-info { display: flex; flex-direction: column; align-items: flex-start; }
+.role-more { margin-top: 0.85rem; font-size: 0.85rem; font-weight: 700; color: #2563eb; opacity: 0.75; transition: opacity .2s, transform .2s; }
+.role-card:hover .role-more { opacity: 1; transform: translateX(3px); }
+.form-group input::placeholder, .form-group textarea::placeholder { color: #94a3b8; }
+.footer-brand p, .footer-bottom { color: #94a3b8; }
