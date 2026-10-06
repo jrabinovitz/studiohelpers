@@ -1,6 +1,6 @@
 // Site-wide analytics. Fill in IDs below; any left blank is skipped.
 (function () {
-    var GA4_ID = '';          // e.g. 'G-XXXXXXXXXX'
+    var GA4_ID = 'G-MZVZM6DFS4';  // e.g. 'G-XXXXXXXXXX'
     var CLARITY_ID = '';      // e.g. 'abcd1234ef'
     var AHREFS_KEY = '';      // Ahrefs Web Analytics data-key
     var ADS_CONVERSION = '';  // optional, e.g. 'AW-123456789/AbC-D_efG-h12_34-567'
