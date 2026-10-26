@@ -1,4 +1,4 @@
-# Studio Helpers: Google Ads Search Plan (v1)
+# Drafting Helpers: Google Ads Search Plan (v1)
 
 > **Status:** Plan only. Nothing has been created, changed, enabled or paused in any Google Ads account.
 > **Keyword data pulled:** 2026-10-06, US, English, Google Search network.
@@ -14,7 +14,7 @@
 | Item | Setting |
 |---|---|
 | Business goal | Qualified discovery requests from **US architecture firms**, mainly for **CAD/Revit drafters** |
-| Primary conversion | Form submit, which redirects to `https://studiohelpers.com/thanks/` and fires GA4 event `generate_lead` |
+| Primary conversion | Form submit, which redirects to `https://draftinghelpers.com/thanks/` and fires GA4 event `generate_lead` |
 | How it gets into Ads | GA4 marks `generate_lead` as a **Key event**. Link GA4 to Google Ads, then **import** the key event as conversion action **"Lead - Form Submit"** |
 | Conversion action settings | Category: *Submit lead form*. **Primary** (used for bidding). Count: **One**. Click-through window: **90 days** (B2B sales cycle). Engaged-view: n/a. View-through: 1 day. Value: static **$100** placeholder (lets you read ROAS later; adjust once close rates are known) |
 | Recommended extra | Add a **Google Ads native tag** on `/thanks/` via GTM with **Enhanced Conversions** (hashed email from the form). It gives better attribution than the GA4 import alone. If you add it, keep **only one of the two as Primary** so leads aren't double-counted |
@@ -86,7 +86,7 @@ Searches like "architectural drafting services" and "cad drafting services" incl
 
 Keyword notation: `"phrase"`, `[exact]`. KP bid = top-of-page low to high. "n/a" = Google returned no bid estimate (low data). AH = Ahrefs volume / CPC.
 
-### AG1: CAD / Architectural Drafting → `https://studiohelpers.com/roles/cad-drafter/`
+### AG1: CAD / Architectural Drafting → `https://draftinghelpers.com/roles/cad-drafter/`
 
 | Keyword | Match | KP vol/mo | KP bid (low-high) | AH vol / CPC |
 |---|---|---|---|---|
@@ -142,7 +142,7 @@ Skipped on purpose:
 | D3 | Fully managed: we recruit, vet and support your drafter. Free replacement guarantee. | 84 |
 | D4 | No long-term contracts. AutoCAD & Revit talent from the Philippines and LATAM. | 78 |
 
-### AG2: Revit / BIM Modeling → `https://studiohelpers.com/roles/bim-modeler/`
+### AG2: Revit / BIM Modeling → `https://draftinghelpers.com/roles/bim-modeler/`
 
 | Keyword | Match | KP vol/mo | KP bid (low-high) | AH vol / CPC |
 |---|---|---|---|---|
@@ -190,7 +190,7 @@ Watch list: *bim modeler*, *revit drafter* and *revit drafting* have mixed inten
 | D3 | Fully managed staffing with a free replacement guarantee. No long-term contracts. | 81 |
 | D4 | A dedicated modeler who works only on your projects, inside your team's workflow. | 81 |
 
-### AG3: 3D Visualization / Rendering → `https://studiohelpers.com/roles/3d-visualization-artist/`
+### AG3: 3D Visualization / Rendering → `https://draftinghelpers.com/roles/3d-visualization-artist/`
 
 | Keyword | Match | KP vol/mo | KP bid (low-high) | AH vol / CPC |
 |---|---|---|---|---|
@@ -239,7 +239,7 @@ Rendering is the **most expensive** cluster: *3d rendering services* tops out at
 | D3 | Fully managed remote staff with a free replacement guarantee. No long-term contracts. | 85 |
 | D4 | Stop paying per render. Get a dedicated artist who works only on your projects. | 79 |
 
-### AG4: Architecture Outsourcing & Staffing → `https://studiohelpers.com/`
+### AG4: Architecture Outsourcing & Staffing → `https://draftinghelpers.com/`
 
 | Keyword | Match | KP vol/mo | KP bid (low-high) | AH vol / CPC |
 |---|---|---|---|---|
@@ -287,7 +287,7 @@ Note: *architecture recruiting firms*, *placement agency* and *staffing agency* 
 | D3 | Fully managed staffing with a free replacement guarantee. No long-term contracts. | 81 |
 | D4 | Tell us the role you need and we place a dedicated team member in 1-2 weeks. | 76 |
 
-### AG5: Construction Admin Support (PAUSED at launch) → `https://studiohelpers.com/roles/construction-admin-support/`
+### AG5: Construction Admin Support (PAUSED at launch) → `https://draftinghelpers.com/roles/construction-admin-support/`
 
 | Keyword | Match | KP vol/mo | KP bid (low-high) | AH vol / CPC |
 |---|---|---|---|---|

@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /thanks/
 
-Sitemap: https://studiohelpers.com/sitemap.xml
+Sitemap: https://draftinghelpers.com/sitemap.xml

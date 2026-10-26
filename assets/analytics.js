@@ -30,6 +30,24 @@
 
     if (AHREFS_KEY) load('https://analytics.ahrefs.com/analytics.js', { 'data-key': AHREFS_KEY });
 
+    // Capture gclid and UTM params from the landing URL into hidden form fields
+    var params = new URLSearchParams(location.search);
+    ['gclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term'].forEach(function (key) {
+        var val = params.get(key);
+        if (val) {
+            // Store in sessionStorage so it persists across page navigations
+            sessionStorage.setItem(key, val);
+        }
+    });
+    // On any page with a form, populate the hidden fields from sessionStorage
+    document.addEventListener('DOMContentLoaded', function () {
+        ['gclid', 'utm_source', 'utm_medium', 'utm_campaign', 'utm_term'].forEach(function (key) {
+            var el = document.getElementById(key);
+            var val = sessionStorage.getItem(key);
+            if (el && val) el.value = val;
+        });
+    });
+
     // Lead conversion: the consultation form redirects to /thanks/
     if (location.pathname.replace(/\/$/, '') === '/thanks') {
         var role = new URLSearchParams(location.search).get('role') || '';

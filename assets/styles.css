@@ -1192,3 +1192,13 @@ button, input, textarea, select { font: inherit; }
 .role-card:hover .role-more { opacity: 1; transform: translateX(3px); }
 .form-group input::placeholder, .form-group textarea::placeholder { color: #94a3b8; }
 .footer-brand p, .footer-bottom { color: #94a3b8; }
+
+/* ===== LEGAL PAGES ===== */
+.legal-content { max-width: 780px; }
+.legal-content h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #1e293b; }
+.legal-content h2 { font-size: 1.25rem; margin: 2rem 0 0.5rem; color: #334155; }
+.legal-content p { margin-bottom: 1rem; }
+.legal-content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
+.legal-content li { margin-bottom: 0.35rem; }
+.footer-bottom a { color: #94a3b8; text-decoration: underline; }
+.footer-bottom a:hover { color: #fff; }

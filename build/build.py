@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).parent))
 from roles_data import ROLES  # noqa: E402
 
-SITE = "https://studiohelpers.com"
+SITE = "https://draftinghelpers.com"
 TODAY = datetime.date.today().isoformat()
 PRICES = {"drafter": (2450, 1500), "admin": (2100, 1300)}
 
@@ -60,7 +60,7 @@ def head(title, description, path, extra=""):
     <meta property="og:description" content="{esc(description)}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{url}">
-    <meta property="og:site_name" content="Studio Helpers">
+    <meta property="og:site_name" content="Drafting Helpers">
     <meta property="og:image" content="{SITE}/assets/og-image.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:image" content="{SITE}/assets/og-image.png">
@@ -134,7 +134,7 @@ def role_page(role, by_slug):
                 "serviceType": f"Remote {role['name']}",
                 "url": url,
                 "description": role["meta_description"],
-                "provider": {"@type": "Organization", "name": "Studio Helpers", "url": SITE},
+                "provider": {"@type": "Organization", "name": "Drafting Helpers", "url": SITE},
                 "areaServed": {"@type": "Country", "name": "United States"},
                 "offers": [
                     {"@type": "Offer", "name": "Full-time", "price": ft, "priceCurrency": "USD",
@@ -234,7 +234,7 @@ def role_page(role, by_slug):
                 <div class="compare-value">~{money(cc['us_monthly'])}<small>/mo</small></div>
             </div>
             <div class="compare-card compare-card-us">
-                <div class="compare-label">Studio Helpers {esc(role['name'])} (full-time, all-inclusive)</div>
+                <div class="compare-label">Drafting Helpers {esc(role['name'])} (full-time, all-inclusive)</div>
                 <div class="compare-value">{money(ft)}<small>/mo</small></div>
                 <div class="compare-save">About {savings}% less</div>
             </div>
@@ -294,11 +294,103 @@ def simple_page(path, title, description, h1, text, robots="noindex"):
     return head(title, description, path, extra) + body + tail()
 
 
+def legal_page(path, title, description, html_body):
+    body = f"""
+<main>
+<section class="role-section" style="padding-top:3rem">
+    <div class="container legal-content">
+{html_body}
+    </div>
+</section>
+</main>
+"""
+    return head(title, description, path) + body + tail()
+
+
 def write(rel, content):
     out = ROOT / rel
     out.parent.mkdir(parents=True, exist_ok=True)
     out.write_text(content, encoding="utf-8", newline="\n")
     print("wrote", rel)
+
+
+PRIVACY_HTML = """\
+        <h1>Privacy Policy</h1>
+        <p><strong>Last updated:</strong> October 26, 2026</p>
+
+        <p>Drafting Helpers ("we", "us", "our") operates the website draftinghelpers.com. This page explains how we collect, use and protect your information when you use our site.</p>
+
+        <h2>Information We Collect</h2>
+        <p><strong>Information you provide:</strong> When you fill out our consultation form, we collect your name, email address, phone number (optional), firm name (optional), the role you are interested in, and any details you share in the message field.</p>
+        <p><strong>Information collected automatically:</strong> We use Google Analytics 4 and may use Microsoft Clarity to collect anonymized usage data such as pages visited, time on site, device type and approximate location. We do not collect financial information through the website.</p>
+
+        <h2>How We Use Your Information</h2>
+        <ul>
+            <li>To respond to your staffing inquiry and provide a custom plan</li>
+            <li>To improve our website and services based on aggregated usage data</li>
+            <li>To measure the effectiveness of our advertising (Google Ads conversion tracking)</li>
+        </ul>
+
+        <h2>Cookies and Tracking</h2>
+        <p>We use cookies set by Google Analytics, Google Ads and Microsoft Clarity to understand how visitors interact with our site. You can control cookies through your browser settings. Disabling cookies may affect some site functionality.</p>
+
+        <h2>Information Sharing</h2>
+        <p>We do not sell, trade or rent your personal information to third parties. We may share data with service providers (e.g., Netlify for hosting, Google for analytics) who assist in operating our website, subject to confidentiality agreements.</p>
+
+        <h2>Data Retention</h2>
+        <p>We retain form submissions for as long as necessary to provide our services and follow up on your inquiry. Analytics data is retained per the default retention periods of the respective platforms.</p>
+
+        <h2>Your Rights</h2>
+        <p>You may request access to, correction of, or deletion of your personal data by emailing us at the address below. California residents have additional rights under the CCPA.</p>
+
+        <h2>Security</h2>
+        <p>We use HTTPS encryption and follow industry-standard practices to protect your data. However, no method of electronic transmission is 100% secure.</p>
+
+        <h2>Changes to This Policy</h2>
+        <p>We may update this policy from time to time. Changes will be posted on this page with a revised date.</p>
+
+        <h2>Contact</h2>
+        <p>Drafting Helpers<br>Sherman Oaks, California<br>Email: info@draftinghelpers.com</p>
+"""
+
+TERMS_HTML = """\
+        <h1>Terms of Service</h1>
+        <p><strong>Last updated:</strong> October 26, 2026</p>
+
+        <p>These terms govern your use of the draftinghelpers.com website ("Site") operated by Drafting Helpers ("we", "us", "our"). By using the Site, you agree to these terms.</p>
+
+        <h2>Services</h2>
+        <p>Drafting Helpers is a staffing agency that places remote architectural professionals with US-based architecture firms. The Site provides information about our services and allows you to submit a consultation request. Submitting a request does not create a binding agreement for staffing services; a separate service agreement is required.</p>
+
+        <h2>Use of the Site</h2>
+        <p>You agree to use the Site for lawful purposes only. You may not:</p>
+        <ul>
+            <li>Submit false or misleading information through our forms</li>
+            <li>Attempt to interfere with or disrupt the Site</li>
+            <li>Scrape, crawl or harvest content from the Site for commercial purposes without permission</li>
+        </ul>
+
+        <h2>Intellectual Property</h2>
+        <p>All content on this Site, including text, graphics, logos and design, is the property of Drafting Helpers and is protected by copyright and trademark laws. You may not reproduce or distribute our content without written permission.</p>
+
+        <h2>Disclaimer</h2>
+        <p>The Site and its content are provided "as is" without warranties of any kind. While we strive for accuracy, we do not guarantee that all information on the Site is complete or current. Savings estimates (e.g., "up to 70% less") are based on general industry comparisons and actual savings vary.</p>
+
+        <h2>Limitation of Liability</h2>
+        <p>To the fullest extent permitted by law, Drafting Helpers shall not be liable for any indirect, incidental or consequential damages arising from your use of the Site.</p>
+
+        <h2>Third-Party Links</h2>
+        <p>The Site may contain links to third-party websites. We are not responsible for the content or practices of those sites.</p>
+
+        <h2>Changes</h2>
+        <p>We may update these terms at any time. Continued use of the Site after changes constitutes acceptance of the revised terms.</p>
+
+        <h2>Governing Law</h2>
+        <p>These terms are governed by the laws of the State of California.</p>
+
+        <h2>Contact</h2>
+        <p>Drafting Helpers<br>Sherman Oaks, California<br>Email: info@draftinghelpers.com</p>
+"""
 
 
 def main():
@@ -307,14 +399,25 @@ def main():
         write(f"roles/{role['slug']}/index.html", role_page(role, by_slug))
 
     write("thanks/index.html", simple_page(
-        "/thanks/", "Thanks | Studio Helpers", "We received your request.",
+        "/thanks/", "Thanks | Drafting Helpers", "We received your request.",
         "Thanks, we got your request.",
         "A member of our team will review your needs and get back to you within one business day with a staffing plan for your firm."))
     write("404.html", simple_page(
-        "/404.html", "Page Not Found | Studio Helpers", "Page not found.",
+        "/404.html", "Page Not Found | Drafting Helpers", "Page not found.",
         "That page doesn't exist.", "It may have moved. Head back home or browse the roles we staff."))
 
-    urls = [("/", "1.0")] + [(f"/roles/{r['slug']}/", "0.8") for r in ROLES]
+    write("privacy/index.html", legal_page(
+        "/privacy/",
+        "Privacy Policy | Drafting Helpers",
+        "Privacy policy for Drafting Helpers — how we collect, use and protect your data.",
+        PRIVACY_HTML))
+    write("terms/index.html", legal_page(
+        "/terms/",
+        "Terms of Service | Drafting Helpers",
+        "Terms of service for Drafting Helpers staffing services.",
+        TERMS_HTML))
+
+    urls = [("/", "1.0")] + [(f"/roles/{r['slug']}/", "0.8") for r in ROLES] + [("/privacy/", "0.3"), ("/terms/", "0.3")]
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>',
                '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for u, pr in urls:
