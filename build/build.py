@@ -321,7 +321,7 @@ PRIVACY_HTML = """\
         <p>Drafting Helpers ("we", "us", "our") operates the website draftinghelpers.com. This page explains how we collect, use and protect your information when you use our site.</p>
 
         <h2>Information We Collect</h2>
-        <p><strong>Information you provide:</strong> When you fill out our consultation form, we collect your name, email address, phone number (optional), firm name (optional), the role you are interested in, and any details you share in the message field.</p>
+        <p><strong>Information you provide:</strong> When you fill out our consultation form, we collect your name, email address, firm name (optional), the role you are interested in, and any details you share in the message field.</p>
         <p><strong>Information collected automatically:</strong> We use Google Analytics 4 and may use Microsoft Clarity to collect anonymized usage data such as pages visited, time on site, device type and approximate location. We do not collect financial information through the website.</p>
 
         <h2>How We Use Your Information</h2>
