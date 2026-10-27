@@ -350,7 +350,7 @@ PRIVACY_HTML = """\
         <p>We may update this policy from time to time. Changes will be posted on this page with a revised date.</p>
 
         <h2>Contact</h2>
-        <p>Drafting Helpers<br>Sherman Oaks, California<br>Email: info@draftinghelpers.com</p>
+        <p>Drafting Helpers<br>4645 Van Nuys Blvd. #202, Sherman Oaks, CA 91403<br>Email: info@draftinghelpers.com</p>
 """
 
 TERMS_HTML = """\
@@ -389,7 +389,7 @@ TERMS_HTML = """\
         <p>These terms are governed by the laws of the State of California.</p>
 
         <h2>Contact</h2>
-        <p>Drafting Helpers<br>Sherman Oaks, California<br>Email: info@draftinghelpers.com</p>
+        <p>Drafting Helpers<br>4645 Van Nuys Blvd. #202, Sherman Oaks, CA 91403<br>Email: info@draftinghelpers.com</p>
 """
 
 
