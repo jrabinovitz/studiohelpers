@@ -18,7 +18,7 @@ from roles_data import ROLES  # noqa: E402
 
 SITE = "https://draftinghelpers.com"
 TODAY = datetime.date.today().isoformat()
-PRICES = {"drafter": (2450, 1500), "admin": (2100, 1300)}
+PRICES = {"admin": (2100, 1450), "drafter": (2450, 1600), "designer": (2800, 1750)}
 
 index = (ROOT / "index.html").read_text(encoding="utf-8")
 
