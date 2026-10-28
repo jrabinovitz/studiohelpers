@@ -2,6 +2,37 @@
   publish = "."
   # Pages are pre-generated and committed: run `python build/build.py` after editing build/roles_data.py or index.html
 
+# Old role pages → new roles (301 permanent)
+[[redirects]]
+  from = "/roles/cad-drafter/*"
+  to = "/roles/drafter/"
+  status = 301
+
+[[redirects]]
+  from = "/roles/bim-modeler/*"
+  to = "/roles/drafter/"
+  status = 301
+
+[[redirects]]
+  from = "/roles/3d-visualization-artist/*"
+  to = "/roles/architectural-designer/"
+  status = 301
+
+[[redirects]]
+  from = "/roles/permit-coordinator/*"
+  to = "/#roles"
+  status = 301
+
+[[redirects]]
+  from = "/roles/construction-admin-support/*"
+  to = "/roles/administrative-assistant/"
+  status = 301
+
+[[redirects]]
+  from = "/roles/marketing-coordinator/*"
+  to = "/#roles"
+  status = 301
+
 [[redirects]]
   from = "/build/*"
   to = "/404.html"
