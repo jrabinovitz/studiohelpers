@@ -1,6 +1,7 @@
-# Drafting Helpers: Google Ads Search Plan (v1)
+# Drafting Helpers: Google Ads Search Plan (v2 -- 3-Role Structure)
 
 > **Status:** Plan only. Nothing has been created, changed, enabled or paused in any Google Ads account.
+> **Updated:** 2026-10-27 (revised for 3-role site structure).
 > **Keyword data pulled:** 2026-10-06, US, English, Google Search network.
 > **Sources:**
 > - **KP** = Google Ads Keyword Planner via API (`GenerateKeywordIdeas`, manager account 605-709-2164). It gives avg. monthly searches for Sep 2025 to Aug 2026, plus the **top-of-page bid range (low to high)**. This account has no spend history, so volumes come back in Google's buckets (10/20/30/50/70/90/110/...).
@@ -9,11 +10,21 @@
 
 ---
 
+## Site roles (updated)
+
+| Role | FT Rate | PT Rate | Landing page |
+|---|---|---|---|
+| Administrative Assistant | $2,100/mo | $1,450/mo | `/roles/administrative-assistant/` |
+| Drafter | $2,450/mo | $1,600/mo | `/roles/drafter/` |
+| Architectural Designer | $2,800/mo | $1,750/mo | `/roles/architectural-designer/` |
+
+---
+
 ## 1. Goal & conversion setup
 
 | Item | Setting |
 |---|---|
-| Business goal | Qualified discovery requests from **US architecture firms**, mainly for **CAD/Revit drafters** |
+| Business goal | Qualified discovery requests from **US architecture firms**, mainly for **Drafters** (CAD + BIM combined) |
 | Primary conversion | Form submit, which redirects to `https://draftinghelpers.com/thanks/` and fires GA4 event `generate_lead` |
 | How it gets into Ads | GA4 marks `generate_lead` as a **Key event**. Link GA4 to Google Ads, then **import** the key event as conversion action **"Lead - Form Submit"** |
 | Conversion action settings | Category: *Submit lead form*. **Primary** (used for bidding). Count: **One**. Click-through window: **90 days** (B2B sales cycle). Engaged-view: n/a. View-through: 1 day. Value: static **$100** placeholder (lets you read ROAS later; adjust once close rates are known) |
@@ -22,7 +33,7 @@
 | Offline (month 2+) | Upload "qualified call booked" / "client signed" with the GCLID stored in a hidden form field. This lets bidding optimize for real deals, not form spam |
 | Auto-tagging | **ON**. Store `gclid` plus UTMs in hidden form fields |
 
-**Benchmarks to judge against (assumptions, not promises):** B2B service search CVR is around 3-6%. Target CPL is **≤ $250** at launch. One full-time drafter placement is $2,450/mo recurring, so a CPL of $250-500 is still very profitable if 1 in 5-10 leads closes.
+**Benchmarks to judge against (assumptions, not promises):** B2B service search CVR is around 3-6%. Target CPL is **<= $250** at launch. One full-time drafter placement is $2,450/mo recurring, so a CPL of $250-500 is still very profitable if 1 in 5-10 leads closes.
 
 ---
 
@@ -30,7 +41,7 @@
 
 **Recommendation: $40/day (~$1,215/mo).** Scale to $60-80/day only after CPL is proven.
 
-| Data point (KP, drafter/BIM core terms) | Value |
+| Data point (KP, drafter core terms) | Value |
 |---|---|
 | Top-of-page bid, low end | $3.40 to $9.00 (e.g. *architectural drafting services* $3.76, *cad drafting services* $4.32, *outsource cad drafting services* $8.69, *bim modeling services* $8.97) |
 | Top-of-page bid, high end | $15 to $50 |
@@ -46,7 +57,7 @@
 Why $40/day:
 - At ~$7 CPC it buys ~170 clicks/mo. That is enough data to judge keywords and landing pages within 30 days.
 - The core drafter niche is small: ~2,000-3,000 relevant US searches/mo in total. More budget than this would just push Google into broader, junkier matching.
-- Split in practice: about 70% of spend should land in drafting/BIM (AG1 + AG2). Steer with the per-keyword bid caps in section 6 and by keeping AG5 paused at launch.
+- Split in practice: about 70% of spend should land in drafting (AG1). Steer with per-keyword bid caps in section 6.
 
 ---
 
@@ -56,23 +67,17 @@ Why $40/day:
 |---|---|
 | Campaign | `SH - Search - Architecture Staffing - US` |
 | Type | Search only. **Uncheck Search Partners and Display Network** |
-| Ad groups | AG1 to AG4 **enabled** at launch. AG5 **paused** (phase 2, week 3+) |
+| Ad groups | AG1 to AG3 **enabled** at launch. AG4 **enabled** but watched closely |
 | Match types | Phrase + Exact only. **No broad match** until 30+ conversions |
 | Ad rotation | Optimize (default) |
 | Auto-apply recommendations | **OFF** (account-level) |
 
 | Ad group | Theme | Landing page | Launch | Priority |
 |---|---|---|---|---|
-| **AG1** CAD / Architectural Drafting | outsource drafting, CAD drafting services, CAD drafters | `/roles/cad-drafter/` | On | #1 |
-| **AG2** Revit / BIM Modeling | Revit drafting, BIM modeling services, BIM modeler | `/roles/bim-modeler/` | On | #2 |
-| **AG3** 3D Visualization / Rendering | architectural rendering/visualization services | `/roles/3d-visualization-artist/` | On (exact-heavy, capped bids) | #3 |
-| **AG4** Architecture Outsourcing & Staffing | architecture outsourcing, staffing for architects, VA for architects | `/` (home) | On | #2 |
-| **AG5** Construction Admin (phase 2) | construction virtual assistant, CA support | `/roles/construction-admin-support/` | **Paused** | #4 |
-
-Not given their own ad group at launch: Architectural Designer, Permit Coordinator, Marketing Coordinator and Admin Assistant.
-- Search demand for staffing-intent versions of these roles is near zero ("hire remote architectural designer" and "permit expediting virtual assistant" both return no volume).
-- Generic "virtual assistant Philippines" terms cost $12-107 top-of-page and aren't architecture-specific.
-- These roles still get traffic through **sitelinks** and the home-page ad group.
+| **AG1** CAD Drafting / Revit / BIM | outsource drafting, CAD drafting services, Revit, BIM modeling | `/roles/drafter/` | On | #1 |
+| **AG2** Architectural Design / 3D Viz | architectural designer, rendering, visualization | `/roles/architectural-designer/` | On | #2 |
+| **AG3** Architecture Outsourcing & Staffing | architecture outsourcing, staffing for architects, VA for architects | `/` (home) | On | #2 |
+| **AG4** Admin / Virtual Assistant | virtual assistant for architects, admin assistant architecture | `/roles/administrative-assistant/` | On (exact-heavy, capped bids) | #3 |
 
 ### Important intent warning: homeowners
 Searches like "architectural drafting services" and "cad drafting services" include **homeowners who want one set of house plans**. Three defenses:
@@ -86,13 +91,22 @@ Searches like "architectural drafting services" and "cad drafting services" incl
 
 Keyword notation: `"phrase"`, `[exact]`. KP bid = top-of-page low to high. "n/a" = Google returned no bid estimate (low data). AH = Ahrefs volume / CPC.
 
-### AG1: CAD / Architectural Drafting → `https://draftinghelpers.com/roles/cad-drafter/`
+### AG1: CAD Drafting / Revit / BIM --> `https://draftinghelpers.com/roles/drafter/`
+
+This is the merged ad group covering what was previously AG1 (CAD) and AG2 (BIM). All traffic goes to `/roles/drafter/`.
 
 | Keyword | Match | KP vol/mo | KP bid (low-high) | AH vol / CPC |
 |---|---|---|---|---|
 | cad drafting services | "phrase" | 590 | $4.32-$20.46 | 900 / $3.00 |
+| bim services | "phrase" | 590 | $9.41-$28.49 | 900 / $10.00 |
 | architectural drafting services | "phrase" | 480 | $3.76-$18.54 | 800 / $3.00 |
+| bim modeling services | "phrase" | 390 | $8.97-$52.49 | 800 / $8.00 |
+| scan to bim services | "phrase" | 260 | $7.65-$27.80 | 500 / $8.00 |
+| bim modeler | [exact] | 260 | $3.00-$15.92 | 200 / $0.90 |
 | architectural drafting firms | [exact] | 210 | n/a | 100 / n/a |
+| revit drafter | [exact] | 170 | $1.43-$15.48 | 50 / $0.60 |
+| revit drafting | [exact] | 170 | $1.43-$15.48 | n/a |
+| bim companies | "phrase" | 170 | $3.69-$12.33 | n/a |
 | outsource cad drafting services | "phrase" | 110 | $8.69-$40.68 | 350 / $4.00 |
 | cad drawing services | [exact] | 110 | $6.15-$35.98 | 200 / $5.00 |
 | autocad drafting services | "phrase" | 90 | $5.99-$14.87 | 100 / $4.50 |
@@ -101,32 +115,36 @@ Keyword notation: `"phrase"`, `[exact]`. KP bid = top-of-page low to high. "n/a"
 | architectural cad drafting services | "phrase" | 70 | n/a | 200 / $6.00 |
 | cad drafting companies | "phrase" | 70 | $3.43-$24.28 | 150 / $2.00 |
 | cadd drafting services | [exact] | 70 | $5.86-$26.75 | 40 / $3.00 |
+| revit modeling services | "phrase" | 70 | $5.78-$18.51 | 400 / $0.60 |
+| revit drafting services | "phrase" | 50 | $12.31-$33.84 | 200 / $20.00 |
+| bim service providers | "phrase" | 50 | $12.00-$73.79 | 200 / $7.00 |
 | outsource cad | "phrase" | 50 | $6.50-$37.10 | 10 / $6.00 |
 | architectural cad drafter | [exact] | 50 | $3.66-$14.78 | 20 / $1.60 |
+| bim modeling company | "phrase" | 40 | $13.95-$54.55 | n/a |
 | outsource drafting services | "phrase" | 40 | n/a | n/a |
 | outsourcing cad drawings | "phrase" | 30 | $14.64-$34.29 | 100 / $8.00 |
 | architectural drafting companies | "phrase" | 30 | $3.51-$6.26 | n/a |
 | outsource architectural drafting | "phrase" | 20 | n/a | n/a |
+| revit outsourcing | "phrase" | 20 | $15.06-$48.31 | 150 / $8.00 |
+| bim outsourcing companies | "phrase" | 20 | n/a | n/a |
+| bim drafting services | "phrase" | 20 | n/a | n/a |
 | architectural drafting services outsourcing | "phrase" | 10 | $7.33-$15.75 | 40 / n/a |
 | hire cad drafter | "phrase" | 10 | n/a | n/a |
 
-Skipped on purpose:
-- *remote cad drafter* (50/mo). Its bid is only $0.11-$2.39, a sign that ~all searchers are job seekers. Revisit later as [exact] if search terms prove otherwise.
-- Every "near me" variant.
-- *drafting* and *cad drafting* (too broad).
+Watch list: *bim modeler*, *revit drafter* and *revit drafting* have mixed intent (job seekers and students). They are exact match only. Pause any of them that spend more than $60 with no lead.
 
-**RSA (AG1).** Pin H12 "Built for Architecture Firms" to position 2. Final URL `/roles/cad-drafter/`, display path `/CAD-Drafters/Remote`.
+**RSA (AG1).** Pin H12 "Built for Architecture Firms" to position 2. Final URL `/roles/drafter/`, display path `/Drafters/Remote`.
 
-| # | Headline (≤30) | Chars |
+| # | Headline (<=30) | Chars |
 |---|---|---|
-| H1 | Remote CAD Drafters for Firms | 29 |
-| H2 | Hire a Dedicated CAD Drafter | 28 |
+| H1 | Remote CAD & BIM Drafters | 25 |
+| H2 | Hire a Dedicated Drafter | 24 |
 | H3 | Architectural Drafting Staff | 28 |
-| H4 | AutoCAD & Revit Drafters | 24 |
+| H4 | AutoCAD, Revit & ArchiCAD | 25 |
 | H5 | Up to 70% Less Than a US Hire | 29 |
 | H6 | Placed in 1-2 Weeks | 19 |
 | H7 | Full-Time Drafter $2,450/mo | 27 |
-| H8 | Part-Time Drafter $1,500/mo | 27 |
+| H8 | Part-Time Drafter $1,600/mo | 27 |
 | H9 | Fully Managed Remote Staff | 26 |
 | H10 | Free Replacement Guarantee | 26 |
 | H11 | No Long-Term Contracts | 22 |
@@ -135,62 +153,14 @@ Skipped on purpose:
 | H14 | Drafters From PH & LATAM | 24 |
 | H15 | Request a Drafter Today | 23 |
 
-| # | Description (≤90) | Chars |
+| # | Description (<=90) | Chars |
 |---|---|---|
-| D1 | Dedicated remote CAD drafters for US architecture firms, placed in just 1-2 weeks. | 82 |
-| D2 | Full-time drafter $2,450/mo or part-time $1,500/mo. Up to 70% less than a US hire. | 82 |
+| D1 | Dedicated remote CAD & BIM drafters for US architecture firms, placed in 1-2 weeks. | 84 |
+| D2 | Full-time drafter $2,450/mo or part-time $1,600/mo. Up to 70% less than a US hire. | 83 |
 | D3 | Fully managed: we recruit, vet and support your drafter. Free replacement guarantee. | 84 |
-| D4 | No long-term contracts. AutoCAD & Revit talent from the Philippines and LATAM. | 78 |
+| D4 | No long-term contracts. AutoCAD, Revit & ArchiCAD talent from PH and LATAM. | 77 |
 
-### AG2: Revit / BIM Modeling → `https://draftinghelpers.com/roles/bim-modeler/`
-
-| Keyword | Match | KP vol/mo | KP bid (low-high) | AH vol / CPC |
-|---|---|---|---|---|
-| bim services | "phrase" | 590 | $9.41-$28.49 | 900 / $10.00 |
-| bim modeling services | "phrase" | 390 | $8.97-$52.49 | 800 / $8.00 |
-| scan to bim services | "phrase" | 260 | $7.65-$27.80 | 500 / $8.00 |
-| bim modeler | [exact] | 260 | $3.00-$15.92 | 200 / $0.90 |
-| revit drafter | [exact] | 170 | $1.43-$15.48 | 50 / $0.60 |
-| revit drafting | [exact] | 170 | $1.43-$15.48 | n/a |
-| bim companies | "phrase" | 170 | $3.69-$12.33 | n/a |
-| revit modeling services | "phrase" | 70 | $5.78-$18.51 | 400 / $0.60 |
-| revit drafting services | "phrase" | 50 | $12.31-$33.84 | 200 / $20.00 |
-| bim service providers | "phrase" | 50 | $12.00-$73.79 | 200 / $7.00 |
-| bim modeling company | "phrase" | 40 | $13.95-$54.55 | n/a |
-| revit outsourcing | "phrase" | 20 | $15.06-$48.31 | 150 / $8.00 |
-| bim outsourcing companies | "phrase" | 20 | n/a | n/a |
-| bim drafting services | "phrase" | 20 | n/a | n/a |
-
-Watch list: *bim modeler*, *revit drafter* and *revit drafting* have mixed intent (job seekers and students). They are exact match only. Pause any of them that spend more than $60 with no lead.
-
-**RSA (AG2).** Pin H12 to position 2. Display path `/BIM-Modelers/Revit`.
-
-| # | Headline (≤30) | Chars |
-|---|---|---|
-| H1 | Remote Revit & BIM Modelers | 27 |
-| H2 | Hire a Dedicated BIM Modeler | 28 |
-| H3 | Revit Staff for Architects | 26 |
-| H4 | Outsource Revit Modeling | 24 |
-| H5 | Up to 70% Less Than a US Hire | 29 |
-| H6 | Placed in 1-2 Weeks | 19 |
-| H7 | Full-Time Modeler $2,450/mo | 27 |
-| H8 | Part-Time Modeler $1,500/mo | 27 |
-| H9 | Fully Managed Remote Staff | 26 |
-| H10 | Free Replacement Guarantee | 26 |
-| H11 | No Long-Term Contracts | 22 |
-| H12 | Built for Architecture Firms | 28 |
-| H13 | Add BIM Capacity Fast | 21 |
-| H14 | Revit Talent From PH & LATAM | 28 |
-| H15 | Request a BIM Modeler Today | 27 |
-
-| # | Description (≤90) | Chars |
-|---|---|---|
-| D1 | Dedicated remote Revit/BIM modelers for US architecture firms, placed in 1-2 weeks. | 83 |
-| D2 | Full-time modeler $2,450/mo or part-time $1,500/mo. Up to 70% less than a US hire. | 82 |
-| D3 | Fully managed staffing with a free replacement guarantee. No long-term contracts. | 81 |
-| D4 | A dedicated modeler who works only on your projects, inside your team's workflow. | 81 |
-
-### AG3: 3D Visualization / Rendering → `https://draftinghelpers.com/roles/3d-visualization-artist/`
+### AG2: Architectural Design / 3D Visualization --> `https://draftinghelpers.com/roles/architectural-designer/`
 
 | Keyword | Match | KP vol/mo | KP bid (low-high) | AH vol / CPC |
 |---|---|---|---|---|
@@ -212,34 +182,34 @@ Watch list: *bim modeler*, *revit drafter* and *revit drafting* have mixed inten
 
 Rendering is the **most expensive** cluster: *3d rendering services* tops out at $64 and *3d rendering companies* at $119. Most of these searchers want per-project renders, not staff. Keep this group on **[exact] for the head term** with a **$10 keyword-level cap** (see section 6). It should be the first ad group cut if CPL runs high.
 
-**RSA (AG3).** Pin H12 to position 2. Display path `/3D-Visualization/Artist`.
+**RSA (AG2).** Pin H12 to position 2. Display path `/Architectural-Designer/Remote`.
 
-| # | Headline (≤30) | Chars |
+| # | Headline (<=30) | Chars |
 |---|---|---|
-| H1 | Remote 3D Visualization Artist | 30 |
-| H2 | Architectural Rendering Staff | 29 |
-| H3 | Hire a Dedicated 3D Artist | 26 |
-| H4 | Your Own Rendering Artist | 25 |
+| H1 | Remote Architectural Designer | 29 |
+| H2 | 3D Visualization Staff | 22 |
+| H3 | Hire a Design Team Extension | 28 |
+| H4 | Rendering & Design Support | 26 |
 | H5 | Up to 70% Less Than a US Hire | 29 |
 | H6 | Placed in 1-2 Weeks | 19 |
-| H7 | Full-Time Artist $2,450/mo | 26 |
-| H8 | Part-Time Artist $1,500/mo | 26 |
+| H7 | Full-Time Designer $2,800/mo | 28 |
+| H8 | Part-Time Designer $1,750/mo | 28 |
 | H9 | Fully Managed Remote Staff | 26 |
 | H10 | Free Replacement Guarantee | 26 |
 | H11 | No Long-Term Contracts | 22 |
 | H12 | Built for Architecture Firms | 28 |
 | H13 | Outsource 3D Rendering | 22 |
 | H14 | Flat Monthly Pricing | 20 |
-| H15 | Request a 3D Artist Today | 25 |
+| H15 | Request a Designer Today | 24 |
 
-| # | Description (≤90) | Chars |
+| # | Description (<=90) | Chars |
 |---|---|---|
-| D1 | A dedicated 3D visualization artist for your architecture firm, placed in 1-2 weeks. | 84 |
-| D2 | Full-time artist $2,450/mo or part-time $1,500/mo. Up to 70% less than a US hire. | 81 |
+| D1 | A dedicated architectural designer for your firm: 3D viz, SD, DD. Placed in 1-2 weeks. | 86 |
+| D2 | Full-time $2,800/mo or part-time $1,750/mo. Up to 70% less than a US hire. | 74 |
 | D3 | Fully managed remote staff with a free replacement guarantee. No long-term contracts. | 85 |
-| D4 | Stop paying per render. Get a dedicated artist who works only on your projects. | 79 |
+| D4 | Stop paying per render. Get a dedicated designer who works only on your projects. | 81 |
 
-### AG4: Architecture Outsourcing & Staffing → `https://draftinghelpers.com/`
+### AG3: Architecture Outsourcing & Staffing --> `https://draftinghelpers.com/`
 
 | Keyword | Match | KP vol/mo | KP bid (low-high) | AH vol / CPC |
 |---|---|---|---|---|
@@ -253,25 +223,22 @@ Rendering is the **most expensive** cluster: *3d rendering services* tops out at
 | architectural outsourcing companies | "phrase" | 10 | n/a | n/a |
 | architectural design outsourcing | "phrase" | 10 | n/a | n/a |
 | outsourcing work for architects | "phrase" | 10 | n/a | n/a |
-| virtual assistant for architects | "phrase" | 10 | n/a | n/a |
-| architect virtual assistant | "phrase" | 10 | n/a | n/a |
 | architecture firm staffing agency | "phrase" | <10 (no data) | n/a | n/a |
-| hire remote architectural designer | "phrase" | <10 (no data) | n/a | n/a |
 
 Note: *architecture recruiting firms*, *placement agency* and *staffing agency* share one Keyword Planner bucket (90/mo). Some of that demand comes from architects looking for jobs. The jobs/careers negatives below handle most of it; check search terms in week 1.
 
-**RSA (AG4).** Pin H12 "Built for Architecture Firms" to position 2. Display path `/Architecture/Staffing`.
+**RSA (AG3).** Pin H12 "Built for Architecture Firms" to position 2. Display path `/Architecture/Staffing`.
 
-| # | Headline (≤30) | Chars |
+| # | Headline (<=30) | Chars |
 |---|---|---|
 | H1 | Remote Staff for Architects | 27 |
 | H2 | Architecture Outsourcing | 24 |
-| H3 | Drafters, BIM & Admin Staff | 27 |
+| H3 | Drafters, Designers & Admin | 27 |
 | H4 | Staffing Agency for Architects | 30 |
 | H5 | Up to 70% Less Than a US Hire | 29 |
 | H6 | Placed in 1-2 Weeks | 19 |
-| H7 | Drafters From $1,500/mo | 23 |
-| H8 | Admin Support From $1,300/mo | 28 |
+| H7 | Drafters From $1,600/mo | 23 |
+| H8 | Admin Support From $1,450/mo | 28 |
 | H9 | Fully Managed Remote Staff | 26 |
 | H10 | Free Replacement Guarantee | 26 |
 | H11 | No Long-Term Contracts | 22 |
@@ -280,56 +247,50 @@ Note: *architecture recruiting firms*, *placement agency* and *staffing agency* 
 | H14 | Talent From PH & LATAM | 22 |
 | H15 | Get Matched in 1-2 Weeks | 24 |
 
-| # | Description (≤90) | Chars |
+| # | Description (<=90) | Chars |
 |---|---|---|
-| D1 | Remote drafters, BIM modelers, designers and admin staff for US architecture firms. | 83 |
-| D2 | Drafters from $1,500/mo, admin from $1,300/mo. Up to 70% less than a US hire. | 77 |
+| D1 | Remote drafters, designers and admin staff for US architecture firms. | 69 |
+| D2 | Drafters from $1,600/mo, admin from $1,450/mo. Up to 70% less than a US hire. | 78 |
 | D3 | Fully managed staffing with a free replacement guarantee. No long-term contracts. | 81 |
 | D4 | Tell us the role you need and we place a dedicated team member in 1-2 weeks. | 76 |
 
-### AG5: Construction Admin Support (PAUSED at launch) → `https://draftinghelpers.com/roles/construction-admin-support/`
+### AG4: Admin / Virtual Assistant --> `https://draftinghelpers.com/roles/administrative-assistant/`
 
 | Keyword | Match | KP vol/mo | KP bid (low-high) | AH vol / CPC |
 |---|---|---|---|---|
+| virtual assistant for architects | "phrase" | 10 | n/a | n/a |
+| architect virtual assistant | "phrase" | 10 | n/a | n/a |
 | virtual construction assistant | "phrase" | 110 | $5.60-$28.42 | 60 / $1.80 |
 | construction virtual assistant | "phrase" | 50 | $6.61-$38.59 | 150 / $7.00 |
 | virtual assistant for construction company | "phrase" | 30 | $11.87-$40.66 | n/a |
 | contractor virtual assistant | "phrase" | 30 | n/a | n/a |
-| virtual assistant construction | [exact] | 20 | $12.14-$49.99 | n/a |
-| virtual assistant construction industry | [exact] | 10 | n/a | n/a |
-| permit expediting services *(test only)* | [exact] | 210 | $2.57-$11.23 | 250 / $3.00 |
-| permit expediting virtual assistant | "phrase" | <10 (no data) | n/a | n/a |
 
-Why AG5 is paused:
-- Most "construction VA" searchers are **contractors**, not architecture firms.
-- "Permit expediting services" searchers usually want a local expediter.
-- Turn AG5 on in **week 3+** only if AG1 to AG4 are below the target CPL. Watch CPL separately.
-- If permit terms convert, split them into their own ad group pointing at `/roles/permit-coordinator/`.
+This group has low architecture-specific volume. Use exact match only for the construction VA terms. Watch CPL closely; cut if CPL exceeds 2x the campaign average.
 
-**RSA (AG5).** Pin H12 to position 2. Display path `/Construction/Admin`.
+**RSA (AG4).** Pin H12 to position 2. Display path `/Admin-Assistant/Remote`.
 
-| # | Headline (≤30) | Chars |
+| # | Headline (<=30) | Chars |
 |---|---|---|
-| H1 | Construction Admin Support | 26 |
-| H2 | Submittals & RFI Support | 24 |
-| H3 | Hire a Remote Admin Assistant | 29 |
-| H4 | Construction Virtual Assistant | 30 |
+| H1 | Admin Assistant for Architects | 30 |
+| H2 | Remote Admin for Your Firm | 26 |
+| H3 | Hire a Virtual Assistant | 24 |
+| H4 | Architecture Firm Admin | 23 |
 | H5 | Up to 70% Less Than a US Hire | 29 |
 | H6 | Placed in 1-2 Weeks | 19 |
 | H7 | Full-Time Admin $2,100/mo | 25 |
-| H8 | Part-Time Admin $1,300/mo | 25 |
+| H8 | Part-Time Admin $1,450/mo | 25 |
 | H9 | Fully Managed Remote Staff | 26 |
 | H10 | Free Replacement Guarantee | 26 |
 | H11 | No Long-Term Contracts | 22 |
 | H12 | Built for Architecture Firms | 28 |
-| H13 | Permit Coordination Support | 27 |
+| H13 | Scheduling & Project Tracking | 29 |
 | H14 | Admin Talent From PH & LATAM | 28 |
 | H15 | Request an Assistant Today | 26 |
 
-| # | Description (≤90) | Chars |
+| # | Description (<=90) | Chars |
 |---|---|---|
-| D1 | Remote construction admin support for architecture firms: submittals, RFIs, logs. | 81 |
-| D2 | Full-time $2,100/mo or part-time $1,300/mo. Up to 70% less than a US hire. | 74 |
+| D1 | Remote admin assistant for architecture firms: scheduling, filing, project tracking. | 83 |
+| D2 | Full-time $2,100/mo or part-time $1,450/mo. Up to 70% less than a US hire. | 74 |
 | D3 | Fully managed staffing with a free replacement guarantee. No long-term contracts. | 81 |
 | D4 | A dedicated assistant placed in 1-2 weeks, working only for your firm. | 70 |
 
@@ -359,22 +320,19 @@ Do **not** add these as negatives. They are core intent: hire, outsource, outsou
 ## 6. Assets (extensions)
 
 ### Sitelinks (account or campaign level)
-URLs, in order: `/roles/cad-drafter/`, `/roles/bim-modeler/`, `/roles/3d-visualization-artist/`, `/roles/architectural-designer/`, `/#pricing`, `/#how-it-works`, `/#guarantee`, `/roles/construction-admin-support/`.
 
-| Sitelink text (≤25) | Desc line 1 (≤35) | Desc line 2 (≤35) | Chars |
+| Sitelink text (<=25) | URL | Desc line 1 (<=35) | Desc line 2 (<=35) |
 |---|---|---|---|
-| CAD Drafters | Dedicated AutoCAD & Revit drafters | FT $2,450/mo or PT $1,500/mo | 12/34/28 |
-| Revit / BIM Modelers | Remote Revit modeling staff | Placed in 1-2 weeks | 20/27/19 |
-| 3D Visualization Artists | Your own rendering artist | FT $2,450/mo or PT $1,500/mo | 24/25/28 |
-| Architectural Designers | Remote design support staff | Fully managed, no contracts | 23/27/27 |
-| Pricing | Flat monthly pricing, FT or PT | Up to 70% less than a US hire | 7/30/29 |
-| How It Works | From intake to placement | Placed in 1-2 weeks | 12/24/19 |
-| Replacement Guarantee | Free replacement if not a fit | No long-term contracts | 21/29/22 |
-| Construction Admin | Submittals, RFIs and CA support | FT $2,100/mo or PT $1,300/mo | 18/31/28 |
+| Drafters | `/roles/drafter/` | Dedicated AutoCAD, Revit & BIM staff | FT $2,450/mo or PT $1,600/mo |
+| Architectural Designers | `/roles/architectural-designer/` | Remote design & 3D viz support | FT $2,800/mo or PT $1,750/mo |
+| Admin Assistants | `/roles/administrative-assistant/` | Scheduling, filing & project tracking | FT $2,100/mo or PT $1,450/mo |
+| Pricing | `/#pricing` | Flat monthly pricing, FT or PT | Up to 70% less than a US hire |
+| How It Works | `/#how-it-works` | From intake to placement | Placed in 1-2 weeks |
+| Replacement Guarantee | `/#guarantee` | Free replacement if not a fit | No long-term contracts |
 
 ### Callouts
 
-| Callout (≤25) | Chars |
+| Callout (<=25) | Chars |
 |---|---|
 | Up to 70% Below US Hires | 24 |
 | Placed in 1-2 Weeks | 19 |
@@ -390,20 +348,17 @@ URLs, in order: `/roles/cad-drafter/`, `/roles/bim-modeler/`, `/roles/3d-visuali
 ### Structured snippets
 - Header **Services**. Values:
 
-| Value (≤25) | Chars |
+| Value (<=25) | Chars |
 |---|---|
 | CAD Drafting | 12 |
 | Revit/BIM Modeling | 18 |
 | 3D Visualization | 16 |
 | Architectural Design | 20 |
-| Permit Coordination | 19 |
-| Construction Admin | 18 |
-| Marketing Coordination | 22 |
 | Admin Assistance | 16 |
 
 - Header **Types**. Values: Full-Time, Part-Time.
 
-Skip for now: call extension (no phone on site), price assets (optional add later: CAD Drafter "From $1,500/mo", BIM Modeler "From $1,500/mo", Admin Assistant "From $1,300/mo"), image assets (add the blueprint illustration + 1 square logo once approved), lead form asset (keep the conversion on-site so GA4 sees it).
+Skip for now: call extension (no phone on site), price assets (optional add later: Drafter "From $1,600/mo", Architectural Designer "From $1,750/mo", Admin Assistant "From $1,450/mo"), image assets (add the blueprint illustration + 1 square logo once approved), lead form asset (keep the conversion on-site so GA4 sees it).
 
 ---
 
@@ -411,9 +366,9 @@ Skip for now: call extension (no phone on site), price assets (optional add late
 
 | Phase | Strategy | Trigger to move on |
 |---|---|---|
-| **Phase 1** (launch to ~30 conv) | **Maximize Clicks**, **max CPC cap $12**. Keyword-level caps: AG3 head terms $10, AG4 staffing terms $8 | ≥30 conversions in the last 30 days, **or** ~15 conv + 6 weeks of steady CPL (low-volume fallback) |
+| **Phase 1** (launch to ~30 conv) | **Maximize Clicks**, **max CPC cap $12**. Keyword-level caps: AG2 head terms $10, AG4 terms $8 | >=30 conversions in the last 30 days, **or** ~15 conv + 6 weeks of steady CPL (low-volume fallback) |
 | **Phase 2** | **Maximize Conversions** (no target) for 2-3 weeks | Stable volume, 30+ conv/30 days |
-| **Phase 3** | Add **Target CPA** at ~1.1x observed CPA | CPA is steady within ±20% week over week |
+| **Phase 3** | Add **Target CPA** at ~1.1x observed CPA | CPA is steady within +/-20% week over week |
 
 Notes:
 - The $12 cap sits above the KP low-end bid for every core term and below most high-end bids. It keeps Max Clicks from overpaying on $40-80 rendering auctions.
@@ -441,11 +396,11 @@ Notes:
 
 **Tracking must be live before any spend.**
 
-- [ ] Role pages `/roles/<slug>/` for all 8 slugs + `/thanks/` are **live and return 200**. Each role page shows the price and has the form above the fold
+- [ ] Role pages `/roles/administrative-assistant/`, `/roles/drafter/`, `/roles/architectural-designer/` + `/thanks/` are **live and return 200**. Each role page shows the price and has the form above the fold
 - [ ] The form posts successfully and **redirects to `/thanks/`**
 - [ ] **GA4** property installed site-wide (gtag or GTM). `generate_lead` fires **once** on `/thanks/` (confirm in GA4 **DebugView**)
 - [ ] `generate_lead` marked as a **Key event** in GA4
-- [ ] **Google Ads ↔ GA4 linked** (GA4 Admin → Product links). Auto-tagging ON
+- [ ] **Google Ads <-> GA4 linked** (GA4 Admin -> Product links). Auto-tagging ON
 - [ ] Conversion imported in Ads as **"Lead - Form Submit"**, set to **Primary**, Count = One, 90-day window
 - [ ] (Recommended) Google Ads tag + Enhanced Conversions via GTM. Only one action set to Primary
 - [ ] Hidden form fields capture `gclid`, `utm_source`, `utm_campaign`, `utm_term`
@@ -455,7 +410,7 @@ Notes:
 - [ ] Shared negative list created and applied
 - [ ] Campaign built **paused**. Review ads for policy/disapprovals. Proofread every RSA headline against the claims rules (**no client counts, reviews, ratings or "trusted by"**)
 - [ ] Assets attached (sitelinks, callouts, snippets)
-- [ ] Enable AG1 to AG4. Leave AG5 paused. Set a calendar reminder for the day-3 and day-7 checks
+- [ ] Enable AG1 to AG4. Set a calendar reminder for the day-3 and day-7 checks
 
 ---
 
@@ -469,17 +424,16 @@ Notes:
 - [ ] Don't pause anything for performance yet. There's too little data
 
 ### Weeks 2-4
-- [ ] Pause any keyword with **>$60 spend and 0 leads** (≈8-9 clicks). Watch list: bim modeler, revit drafter, revit drafting, 3d rendering services
-- [ ] Compare CPL by ad group. If AG3 CPL is >2x AG1, cut AG3 to its 3-4 best exact terms or pause it
+- [ ] Pause any keyword with **>$60 spend and 0 leads** (~8-9 clicks). Watch list: bim modeler, revit drafter, revit drafting, 3d rendering services
+- [ ] Compare CPL by ad group. If AG2 CPL is >2x AG1, cut AG2 to its 3-4 best exact terms or pause it
 - [ ] RSA asset report: replace "Low" rated headlines once each ad has 2,000+ impressions. Test a price-led variant vs a speed-led variant
 - [ ] Check landing pages: bounce rate / engaged sessions in GA4 for each `/roles/` page. A low engagement rate means the page needs work, not the ads
 - [ ] Device and hour-of-day review. Trim hours with spend and no leads (on Max Clicks the schedule is the main lever)
-- [ ] Week 3: if CPL is ≤ $250, **enable AG5** and consider raising budget to $50/day
-- [ ] Month-end: tally leads → qualified calls → signed clients. Start uploading **offline conversions** (qualified call) keyed on gclid
+- [ ] Week 3: if CPL is <= $250, consider raising budget to $50/day
+- [ ] Month-end: tally leads -> qualified calls -> signed clients. Start uploading **offline conversions** (qualified call) keyed on gclid
 
 ### Month 2+
 - [ ] At ~30 conv/30 days, switch to **Maximize Conversions**. Later move to tCPA
-- [ ] Add a Permit Coordinator ad group if permit terms convert in AG5
 - [ ] Test broad match **only** on AG1 with Max Conversions + full negatives (as a separate experiment)
 - [ ] Consider a remarketing (RLSA) bid layer and a small Demand Gen/YouTube test after Search is profitable
 
@@ -490,12 +444,12 @@ Notes:
 | Keyword | Vol/mo | Top-of-page bid | Ad group |
 |---|---|---|---|
 | cad drafting services | 590 | $4.32-$20.46 | AG1 |
-| bim services | 590 | $9.41-$28.49 | AG2 |
+| bim services | 590 | $9.41-$28.49 | AG1 |
 | architectural drafting services | 480 | $3.76-$18.54 | AG1 |
-| bim modeling services | 390 | $8.97-$52.49 | AG2 |
+| bim modeling services | 390 | $8.97-$52.49 | AG1 |
 | outsource cad drafting services | 110 | $8.69-$40.68 | AG1 |
-| architectural rendering services | 590 | $7.89-$48.23 | AG3 |
-| revit drafting services | 50 | $12.31-$33.84 | AG2 |
+| architectural rendering services | 590 | $7.89-$48.23 | AG2 |
+| revit drafting services | 50 | $12.31-$33.84 | AG1 |
 
 Considered and rejected:
 - Generic Philippines VA terms. *hire virtual assistant philippines* gets 480/mo but bids run $13-66, and *virtual assistant agency philippines* runs up to $107. They aren't architecture-specific, and VA agencies compete heavily.

@@ -46,24 +46,23 @@ def esc(s):
     return html.escape(s, quote=True)
 
 
-def head(title, description, path, extra=""):
+def head(title, description, path, extra="", canonical=True, robots="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"):
     url = SITE + path
+    canonical_tag = f'\n    <link rel="canonical" href="{url}">' if canonical else ""
+    robots_tag = f'\n    <meta name="robots" content="{robots}">' if robots else ""
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{esc(title)}</title>
-    <meta name="description" content="{esc(description)}">
-    <link rel="canonical" href="{url}">
+    <meta name="description" content="{esc(description)}">{canonical_tag}
     <meta property="og:title" content="{esc(title)}">
     <meta property="og:description" content="{esc(description)}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{url}">
     <meta property="og:site_name" content="Drafting Helpers">
-    <meta property="og:image" content="{SITE}/assets/og-image.png">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:image" content="{SITE}/assets/og-image.png">
+    <meta property="og:image" content="{SITE}/assets/og-image.png">{robots_tag}
     <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="/assets/styles.css">
     <script src="/assets/analytics.js"></script>{extra}
@@ -275,8 +274,7 @@ def role_page(role, by_slug):
     return head(role["title"], role["meta_description"], path, schema) + body + tail()
 
 
-def simple_page(path, title, description, h1, text, robots="noindex"):
-    extra = f'\n    <meta name="robots" content="{robots}">'
+def simple_page(path, title, description, h1, text, robots="noindex", canonical=True):
     body = f"""
 <main>
 <section class="role-hero simple-hero">
@@ -291,7 +289,7 @@ def simple_page(path, title, description, h1, text, robots="noindex"):
 </section>
 </main>
 """
-    return head(title, description, path, extra) + body + tail()
+    return head(title, description, path, canonical=canonical, robots=robots) + body + tail()
 
 
 def legal_page(path, title, description, html_body):
@@ -404,7 +402,8 @@ def main():
         "A member of our team will review your needs and get back to you within one business day with a staffing plan for your firm."))
     write("404.html", simple_page(
         "/404.html", "Page Not Found | Drafting Helpers", "Page not found.",
-        "That page doesn't exist.", "It may have moved. Head back home or browse the roles we staff."))
+        "That page doesn't exist.", "It may have moved. Head back home or browse the roles we staff.",
+        canonical=False))
 
     write("privacy/index.html", legal_page(
         "/privacy/",
