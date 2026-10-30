@@ -2,6 +2,31 @@
   publish = "."
   # Pages are pre-generated and committed: run `python build/build.py` after editing build/roles_data.py or index.html
 
+[functions]
+  node_bundler = "esbuild"
+
+# ===== Blog & API redirects =====
+[[redirects]]
+  from = "/api/articles-webhook"
+  to = "/.netlify/functions/articles-webhook"
+  status = 200
+
+[[redirects]]
+  from = "/blog"
+  to = "/.netlify/functions/blog"
+  status = 200
+
+[[redirects]]
+  from = "/blog/*"
+  to = "/.netlify/functions/blog-post"
+  status = 200
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/.netlify/functions/dynamic-sitemap"
+  status = 200
+  force = true
+
 # Old role pages → new roles (301 permanent)
 [[redirects]]
   from = "/roles/cad-drafter/*"
