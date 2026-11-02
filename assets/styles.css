@@ -444,6 +444,24 @@ button, input, textarea, select { font: inherit; }
     display: flex;
     gap: 1.5rem;
     align-items: flex-start;
+    position: relative;
+}
+.role-card-featured {
+    border: 2px solid #2563eb;
+    box-shadow: 0 4px 20px rgba(37,99,235,0.12);
+}
+.role-badge-popular {
+    position: absolute;
+    top: -0.7rem;
+    left: 1.5rem;
+    background: #2563eb;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
 }
 .role-card:hover {
     border-color: #2563eb;
