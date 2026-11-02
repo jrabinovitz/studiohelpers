@@ -20,10 +20,12 @@ function headerHTML() {
             <span class="powered-by">by <a href="https://hardhathelpers.com" target="_blank" rel="noopener">Hard Hat Helpers</a></span>
         </div>
         <nav class="nav-links" aria-label="Main navigation">
-            <a href="/blog">Blog</a>
             <a href="/#roles">Services</a>
             <a href="/#pricing">Pricing</a>
             <a href="/#how-it-works">How It Works</a>
+            <a href="/#about">About</a>
+            <a href="/#faq">FAQ</a>
+            <a href="/blog">Blog</a>
             <a href="/#contact" class="btn btn-primary nav-cta">Get Started</a>
         </nav>
         <button class="mobile-toggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -32,10 +34,12 @@ function headerHTML() {
     </div>
 </header>
 <nav class="mobile-nav" aria-label="Mobile navigation">
-    <a href="/blog">Blog</a>
     <a href="/#roles">Services</a>
     <a href="/#pricing">Pricing</a>
     <a href="/#how-it-works">How It Works</a>
+    <a href="/#about">About</a>
+    <a href="/#faq">FAQ</a>
+    <a href="/blog">Blog</a>
     <a href="/#contact" class="btn btn-primary">Get Started</a>
 </nav>`;
 }
