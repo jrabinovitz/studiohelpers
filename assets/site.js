@@ -39,3 +39,11 @@ document.querySelectorAll('.faq-question').forEach(btn => {
         btn.setAttribute('aria-expanded', open);
     });
 });
+
+// Auto-select role dropdown when clicking role-specific CTAs
+document.querySelectorAll('[data-role]').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const roleSelect = document.getElementById('role');
+        if (roleSelect) roleSelect.value = btn.dataset.role;
+    });
+});
