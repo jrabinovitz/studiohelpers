@@ -1019,9 +1019,20 @@ button, input, textarea, select { font: inherit; }
     gap: 2.5rem;
     flex-wrap: wrap;
 }
-.contact-info-row .contact-detail { color: #cbd5e1; }
+.contact-info-row .contact-detail {
+    color: #cbd5e1;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+}
 .contact-info-row .contact-detail a { color: #cbd5e1; transition: color 0.2s; }
 .contact-info-row .contact-detail a:hover { color: #fff; }
+.contact-info-row .contact-detail-icon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+}
 
 /* ===== FOOTER ===== */
 .footer {
@@ -1171,6 +1182,9 @@ button, input, textarea, select { font: inherit; }
     .step-card { padding: 1.75rem; }
     .faq-question { font-size: 0.95rem; padding: 1.1rem 0; }
     .contact-form-wrap { padding: 1.5rem; }
+    .contact-info-row { flex-direction: column; align-items: center; gap: 1.25rem; }
+    .contact-info-row .contact-detail { justify-content: center; }
+    .booking-cta { width: 100%; justify-content: center; padding: 1rem 1.5rem; font-size: 1.05rem; }
     .testimonial-card { padding: 1.5rem; }
     .about-stat-card { padding: 1.25rem 1.5rem; }
 }
