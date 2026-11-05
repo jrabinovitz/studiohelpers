@@ -14,7 +14,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const target = document.querySelector(id);
         if (target) {
             e.preventDefault();
-            const top = target.getBoundingClientRect().top + window.pageYOffset - 80;
+            const top = target.getBoundingClientRect().top + window.pageYOffset - 92;
             window.scrollTo({ top, behavior: 'smooth' });
         }
     });
@@ -37,13 +37,5 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     btn.addEventListener('click', () => {
         const open = btn.parentElement.classList.toggle('open');
         btn.setAttribute('aria-expanded', open);
-    });
-});
-
-// Auto-select role dropdown when clicking role-specific CTAs
-document.querySelectorAll('[data-role]').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const roleSelect = document.getElementById('role');
-        if (roleSelect) roleSelect.value = btn.dataset.role;
     });
 });
